@@ -2,7 +2,7 @@
 #define SORT_H
 
 #include <stdio.h>
-#include <stdib.h>
+#include <stdlib.h>
 
 /**
  * enum bool - Enumeration of Boolean values.
