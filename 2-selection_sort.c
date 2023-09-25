@@ -1,51 +1,36 @@
 #include "sort.h"
 
 /**
- * insertion_sort_list - sorts doubly linked list of ints
- *                in ascending order using insertion algo
- * @list: doubly linked list to sort
+ * selection_sort - sorts an array of ints in
+ *             ascending order using selection sort
+ * @array: array to be sorted
+ * @size: number of elements in array
  * Return: nothing
  */
-void insertion_sort_list(listint_t **list)
+void selection_sort(int *array, size_t size)
 {
-	listint_t *temp, *pre, *current;
+	int idx = 0, temp, min;
+	size_t i, j;
 
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
+	if (array == NULL || size < 2)
 		return;
-
-	current = (*list)->next;
-	temp = current->next;
-	while (current)
+	for (i = 0; i < size - 1; i++)
 	{
-		if (current->n < current->prev->n)
+		min = array[i];
+		for (j = i + 1; j < size; j++)
 		{
-			pre = current->prev;
-			while (pre && (current->n < pre->n))
+			if (array[j] < min)
 			{
-				if (!(pre->prev))
-				{
-					pre->prev = current;
-					current->prev->next = current->next;
-					if (current->next)
-						current->next->prev = current->prev;
-					current->next = pre;
-					current->prev = NULL;
-					*list = current;
-				} else
-				{
-					current->prev->next = current->next;
-					if (current->next)
-						current->next->prev = current->prev;
-					pre->prev->next = current;
-					current->prev = pre->prev;
-					pre->prev = current;
-					current->next = pre;
-				}
-				print_list(*list);
-				pre = current->prev;
+				min = array[j];
+				idx = j;
 			}
 		}
-		current = temp;
-		current ? (temp = current->next) : (temp = NULL);
+		if (min != array[i])
+		{
+			temp = array[i];
+			array[i] = array[idx];
+			array[idx] = temp;
+			print_array(array, size);
+		}
 	}
 }
