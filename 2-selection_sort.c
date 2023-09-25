@@ -1,78 +1,51 @@
 #include "sort.h"
 
 /**
-<<<<<<< HEAD
- * swaap_ints - Swap two integers in an array.
- * @a: The first integer to swap.
- * @b: the seond integer to swap.
+ * insertion_sort_list - sorts doubly linked list of ints
+ *                in ascending order using insertion algo
+ * @list: doubly linked list to sort
+ * Return: nothing
  */
-void swap_int(int *a, int *b)
-=======
-* swap_ints- swap integers in array
-*@a: first int o swap
-*@b: second int to swap
-*
-*/
-void swap_ints(int *a, int *b)
->>>>>>> 8f2021579318103d1f0aed29faa6153405a6e525
+void insertion_sort_list(listint_t **list)
 {
-	int tmp;
+	listint_t *temp, *pre, *current;
 
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
-
-/**
-<<<<<<< HEAD
- * selection_sort - Sort an array of integers in ascending order
- * 		    using the selction sort algorithm.
- * @array: An array of integers.
- * @size: The size of the array.
- *
- * Description: Prints the array after each swap/
- */
-void selecton_sort(int *array, size_t size)
-=======
-*selection_sort- sort an array of integers in ascending order
-*		 using the selection sort algorithm
-*@array: array of integers
-*@size: array size
-*
-*/
-void selection_sort(int *array, size_t size)
->>>>>>> 8f2021579318103d1f0aed29faa6153405a6e525
-{
-	int *min;
-	size_t i, j;
-
-<<<<<<< HEAD
-	if (array == NULL || size < 2)
-=======
-	if (array == NULL|| size < 2)
->>>>>>> 8f2021579318103d1f0aed29faa6153405a6e525
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 
-	for (i = 0; i < size - 1; i++)
+	current = (*list)->next;
+	temp = current->next;
+	while (current)
 	{
-		min = array + i;
-<<<<<<< HEAD
-		for (j = I + 1; j < size; j++)
-			min = (array[j] < *min) ? (array + j) : min;
-
-		if ((array +i) != min)
-=======
-		for (j = i; j < size; j++)
-			min = (array[j] < *min ? (array + j) : min);
-		if ((array + i) != min)
->>>>>>> 8f2021579318103d1f0aed29faa6153405a6e525
+		if (current->n < current->prev->n)
 		{
-			swap_ints(array + i, min);
-			print_array(array, size);
+			pre = current->prev;
+			while (pre && (current->n < pre->n))
+			{
+				if (!(pre->prev))
+				{
+					pre->prev = current;
+					current->prev->next = current->next;
+					if (current->next)
+						current->next->prev = current->prev;
+					current->next = pre;
+					current->prev = NULL;
+					*list = current;
+				} else
+				{
+					current->prev->next = current->next;
+					if (current->next)
+						current->next->prev = current->prev;
+					pre->prev->next = current;
+					current->prev = pre->prev;
+					pre->prev = current;
+					current->next = pre;
+				}
+				print_list(*list);
+				pre = current->prev;
+			}
 		}
+		current = temp;
+		current ? (temp = current->next) : (temp = NULL);
 	}
 }
-<<<<<<< HEAD
-=======
-	
->>>>>>> 8f2021579318103d1f0aed29faa6153405a6e525
