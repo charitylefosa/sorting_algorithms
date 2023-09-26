@@ -1,7 +1,7 @@
 ALX Group project on Sorting Algorithms
-By Charity Lefosa and Mpho Mofokeng
+By Charity Lefosa charitylefosa@gmail.com and Mpho Mofokeng christian.mofokeng@gmail.com
 
-AIM
+AIM:
 Using four different sorting algorithms
 What is a stable sorting algorithm
 How to select the best sorting algorithm for a given input
