@@ -70,7 +70,7 @@ char get_value(deck_node_t *card)
 */
 void insertion_sort_deck_kind(deck_node_t **deck)
 {
-	deck_node_t *iter, *insert, *tmp;
+	deck_node_t *iter, *tmp, *insert;
 
 	for (iter = (*deck)->next; iter != NULL; iter = tmp)
 	{
@@ -100,7 +100,7 @@ void insertion_sort_deck_kind(deck_node_t **deck)
 */
 void insertion_sort_deck_value(deck_node_t **deck)
 {
-	deck_node_t *iter, *insert, *tmp;
+	deck_node_t *iter, *tmp, *insert;
 
 	for (iter = (*deck)->next; iter != NULL; iter = tmp)
 	{
